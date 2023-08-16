@@ -1,0 +1,32 @@
+ERRORES
+import pymysql
+
+connection = pymysql.connect(host='localhost', user='root', password='', database='db')
+
+cursor = connection.cursor()
+query = "SELEC * FROM friends"   ((('SELEC' debería ser 'SELECT')))
+cursor.execute(query)
+
+
+import pymysql
+
+connection = pymysql.connect(host='localhost', user='root', password='', database='db')
+connection.close()
+
+cursor = connection.cursor()
+query = "SELECT * FROM friends"
+cursor.execute(query)
+
+(((intentar usar el cursor después de haber cerrado la conexión, lo que generará un error.)))
+
+
+
+import pymysql
+
+connection = pymysql.connect(host='localhost', user='root', password='', database='db')
+
+cursor = connection.cursor()
+query = "DELETE FROM friends WHERE id = 'abc'"  # 'abc' debería ser un valor numérico
+cursor.execute(query)
+
+((( intentar eliminar registros utilizando un valor no numérico como condición.)))
