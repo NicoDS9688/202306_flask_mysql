@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block title %}Edit User {{user.id}}{% endblock %}
+
+{% block content %}
+    <div class="container text-start mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1> Edit User {{user.id}}</h1>
+            <a href="/users/">Home</a>
+        </div>
+
+        <div class="container mt-3">
+            <form class="text-start" action="/users/edit/{{user.id}}" method="post" name="edit_user">
+                <input type="hidden" name="id" value="{{user.id}}">
+                <div class="mb-3">
+                    <label class="form-label fw-bold" for="name">Name:</label>
+                    <input class="form-control" type="text" id="name" name="name" value="{{user.name}}">
+                    <label class="form-label fw-bold" for="email">Email:</label>
+                    <input class="form-control" type="text" id="email" name="email" value="{{user.email}}">
+                </div>
+                <div class="row justify-content-start mt-3 allign-items-center" >
+                    <div class="col-md-1">
+                        <button class="btn btn-primary" type="submit">Update</button>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="/users/{{user.id}}">Show User</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
