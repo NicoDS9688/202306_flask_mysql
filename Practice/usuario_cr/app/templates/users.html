@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block title %} Read (All) {% endblock %}
+
+{% block content %}
+    <div class="container text-start mt-5">
+        <h1>All Users</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="container text-start">
+            <a href="/users/add/">Add a New User</a>
+        </div>
+    </div>
+{% endblock %}
