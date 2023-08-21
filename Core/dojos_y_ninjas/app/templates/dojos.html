@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block title %}Dojos{% endblock %}
+
+{% block content %}
+
+<div class="container text-start">
+    <div class="row">
+        <div class="col-md-6 mt-5">
+            <h1>New Dojo</h1>
+            <form action="{{url_for('new_dojo')}}" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">New Dojo</label>
+                    <input class="form-control form-control-lg" id="name" name="name" type="text" required>
+                </div>
+                <button class="btn btn-primary" type="submit" method="post">Create</button>
+            </form>
+        </div>
+        <div class="col-md-6 mt-5">
+            <h1 class="text-center">All dojos</h1>
+            <div class="container col-6 mt-5">
+                <div class="mb-3">
+                    <div>
+                        <div class="list-group">
+
+                            {% for dojo in dojos %}
+
+                                <a href="{{ url_for('show_dojo', id=dojo.id)}}" class="list-group-item list-group-item-action">{{dojo.name}}</a>
+
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="container mt-3">
+                        <a href="{{ url_for('add_ninja')}}">Add Ninja</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

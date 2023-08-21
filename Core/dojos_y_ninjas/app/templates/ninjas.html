@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block title %}New Ninja{% endblock %}
+
+{% block content %}
+
+<div class="container text-start">
+    <h1>New ninja</h1>
+    <form action="/ninjas/add/" method="post">
+
+        <label for="dojo" class="form-label">Dojo:</label>
+        <select class="form-select" id = dojo name="dojo">
+            {% for dojo in dojos %}
+                <option value="{{dojo.id}}">{{dojo.name}}</option>
+            {% endfor %}
+        </select>
+
+        <div class="mb-3">
+            <label for="first_name" class="form-label mt-3">First Name:</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" class="form-control" id="age" name="age" min="0" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+    <div class="container mt-3">
+        <a href="{{url_for('home')}}">Home</a>
+    </div>
+</div>
+
+{% endblock %}
