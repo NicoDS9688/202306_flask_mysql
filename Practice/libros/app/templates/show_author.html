@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Author Show{% endblock %}
+
+{% block content %}
+    <div class="container text-start">
+        <h1>{{author.name}}'s favourites</h1>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col"># of pages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in author.favourite_books %}
+                        <tr>
+                            <td>{{ book.title}}</td>
+                            <td>{{ book.num_of_pages }}</td>
+                        </tr>
+                    {% endfor %}
+                    {% if not author.favourite_books %}
+                        <tr>
+                            <td colspan="2"><h4 class="text-center">The Author does not have favourites</h4></td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="container mt-3">
+            <a href="{{url_for('home')}}">Home</a>
+        </div>
+    </div>
+{% endblock %}
