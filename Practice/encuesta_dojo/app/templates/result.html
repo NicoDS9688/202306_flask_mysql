@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <div class="container border border-3 border-grey mt-5" style="background-color: #33393e;">
+        <div class="row text-start">
+            <h1 style="color: gold; font-size: 5rem;""  class="h2 mt-2">{{ session['name'] }} </h1>
+            <h2 style="color: white" class="h2 mt-2">Dojo Location: {{ session['location'] }} </h2>
+            <h2 style="color: white" class="h2 mt-2">Favourite Language: {{ session['language'] }} </h2>
+            <h2 style="color: white" class="h2 mt-2">Comments: {{ session['comment'] }} </h2>
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-primary mb-3 mt-3" onclick="window.location.href='/';">Home</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
