@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %} 
+
+{% block styles %}
+{% endblock %}
+
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Welcome {{session.user.first_name}} {{session.user.last_name}}</h1>
+    <a href="/exit" class="btn btn-primary">Exit</a>
+
+{% endblock %}
