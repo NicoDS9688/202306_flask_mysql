@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+{% block title %}Success Page{% endblock %} 
+
+
+{% block content %}
+
+<div class="container border border-dark col-6 p-4 mt-5">
+    <div class="row col-10 p-4">
+        <h3 class="mb-3">Emails List</h3>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Email:</th>
+                    <th scope="col">Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for user in users %}
+                <tr>
+                    <td>{{user.email}}</td>
+                    <td>{{user.created_at}}</td>
+                    <td><a class="btn btn-danger" href="{{ url_for('delete_user', id = user.id) }}">DELETE</a></td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <div>
+            <a class="btn btn-primary" href="{{url_for('home')}}">Home</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}  
