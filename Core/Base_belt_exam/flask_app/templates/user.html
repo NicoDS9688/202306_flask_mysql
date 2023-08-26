@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}User's Thoughts{% endblock %} 
+
+{% block styles %}
+{% endblock %}
+
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>User {{user.first_name}}</h1>
+    <hr>
+
+    {% for thought in thoughts %}
+        <div class="row g-3 align-items-center mt-3">
+            <div class="col-12">
+                <div class="border">
+                    {{thought}}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
