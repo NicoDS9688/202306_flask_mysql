@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe Share{% endblock %} 
+
+{% block styles %}
+{% endblock %}
+
+
+{% block content %}
+    <h1>Welcome, {{session.user.first_name}} {{session.user.last_name}}</h1>
+
+    <form action="/process_new_recipe" method="post">
+        <div class="row">
+            <div class="col">
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-3">
+                        <label for="name" class="col-form-label">Title:</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" id="title" name="title" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-3">
+                        <label for="name" class="col-form-label">Description:</label>
+                    </div>
+                    <div class="col-9">
+                        <textarea type="text" id="description" name="description" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-3">
+                        <label for="name" class="col-form-label">Intructions:</label>
+                    </div>
+                    <div class="col-9">
+                        <textarea type="text" id="instructions" name="instructions" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-3">
+                        <label for="name" class="col-form-label">Date Cooked/Made:</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="date" id="made_at" name="made_at" class="form-control">
+                    </div>
+                </div>
+                <h3>Under 30</h3></h1>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="more_than_30" id="more"
+                        value="Yes">
+                    <label class="form-check-label" for="more">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="more_than_30" id="under"
+                        value="No" checked>
+                    <label class="form-check-label" for="under">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center mt-3">
+            <div class="col-3">
+            </div>
+            <div class="col-9">
+                <button class="btn btn-primary" type="submit">Add</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+{% endblock %}
+

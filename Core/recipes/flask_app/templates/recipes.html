@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe Share{% endblock %} 
+
+{% block styles %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            <h1>Welcome, {{session.user.first_name}}!</h1>
+        </div>
+        <div class="col-12 p-3 text-end d-flex justify-content-between">
+            <a href="{{ url_for('new_recipe') }}">+Create</a>
+            <a href="/exit"> logout </a>
+        </div>
+    </div>
+    <hr>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Under</th>
+            <th scope="col">Posted By</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+            <tr>
+                <td>{{recipe.title}}</td>
+                <td>{{recipe.more_than_30}}</td>
+                <td>{{recipe.user.first_name}}</td>
+                <td>
+                    <a href="{{ url_for('recipe_info', recipe_id=recipe.id) }}">show</a>
+                    {% if recipe.user_id == session.user.id %}
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe.id) }}">| edit |</a>
+                        <a href="{{ url_for('recipe_delete', recipe_id=recipe.id) }}">delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

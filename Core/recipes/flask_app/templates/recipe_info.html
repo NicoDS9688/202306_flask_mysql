@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe Share{% endblock %} 
+
+{% block styles %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 p-3 text-end d-flex justify-content-between">
+            <a href="/">Recipes</a>
+            <a href="/exit"> logout </a>
+        </div>
+    </div>
+    <h1>Welcome, {{user.first_name}}</h1>
+    <div class="row mt-3">
+        <div class="col">
+            <h3>{{recipe.title}}</h3>
+        </div>
+        <div class="col text-end">
+            <p>Posted by: {{ recipe.user.first_name }}</p>
+        </div>
+    </div>
+    <div class="container border border-dark text-start">
+        <br>
+        <p><strong>Description:</strong></p>
+        <p>{{recipe.description}}</p>
+        <p><strong>Under 30 minutes?:</strong></p>
+        <p>{{recipe.more_than_30}}</p>
+        <p><strong>Intructions:</strong></p>
+        <p>{{recipe.instructions}}</p>
+        <p><strong>Date Cooked/Made:</strong></p>
+        <p> {{ recipe.made_at.strftime('%B %d, %Y') if recipe.made_at else '' }}</p>
+        <br>
+    </div>
+{% endblock %}
